@@ -1,0 +1,104 @@
+body{
+    margin:0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url(images/bg.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#container{
+    width:100%;
+    display: flex;
+}
+
+#nav{
+    position:fixed;
+    height:100%;
+}
+
+#nav ul{
+    background: #EFEFEF;
+    height: 100%;
+    width: 250px;
+    font-size: 11pt;
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+    overflow: hidden;
+    float:left;
+}
+
+#navExpand{
+    background: #242E3A;
+}
+
+#nav li a{
+    display: block;
+    color: black;
+    padding: 10 10 10 10;
+    text-decoration: none;
+    text-align: left;
+}
+
+#nav li a:hover{
+    background: lightgray;
+}
+
+#createList{
+    background: darkgray;
+    color: black;
+    text-decoration: none;
+    text-align: left;
+}
+
+#todoItem{
+    background: lightgray;
+    padding: 5 5 5 5;
+    margin-bottom: 5;
+}
+
+#search{
+    width: 200px;
+    height: 25px;
+}
+
+#searchli{
+    padding: 5 5 5 5;
+}
+
+#user{
+    vertical-align: middle;
+}
+
+#content{
+    flex-grow: 1;
+    height:100%;
+    margin-left: 250px;
+    color: white;
+}
+
+#contentHeader{
+    background: #293F5A;
+    padding: 16;
+}
+
+#createContainer{
+    margin: 10;
+    opacity: 0.5;
+}
+
+#create{
+    font-size: 22pt;
+    height: 55px;
+    width: 100%;
+    background: #d3d3d3;
+    color: #000011;
+}
+
+#textContent{
+    padding: 0 5 5 5;
+}
+
+.hidden { visibility: hidden; }
+.unhidden { visibility: visible; }

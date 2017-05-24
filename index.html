@@ -1,0 +1,89 @@
+<head>
+    <title>Task Manager App</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDO0Gc7DRfO8ypX-wdzz4iXbZZZRGQa8lw",
+        authDomain: "task-manager-ee225.firebaseapp.com",
+        databaseURL: "https://task-manager-ee225.firebaseio.com",
+        projectId: "task-manager-ee225",
+        storageBucket: "task-manager-ee225.appspot.com",
+        messagingSenderId: "544864379316"
+    };
+    firebase.initializeApp(config);
+    </script>
+    <script language="Javascript" src="tm.js"></script>
+</head>
+<body>
+    <div id="container">
+        <div id="nav">
+            <ul id="leftNav" style="width: 250px;">
+                <li id="navExpand">
+                    <a href="javascript:;" onclick="toggleNav()">
+                        <img src="images/squares.png">
+                    </a><!--<a href="javascript:;" onclick="toggleSearch()" style="float:right;"><img src="images/search.png"></a>-->
+                </li>
+                <li id="searchli">
+                    <center>
+                        <input type="text" value="Search" id="search" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if (this.value == 'Search') {this.value = '';}" />
+                    </center>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <img src="images/user.png" style="vertical-align: middle; width:32px; height: 32px;">
+                        <div id="navTxt1" class="unhidden" style="display:inline;"> NKasco</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <img src="images/home.png" style="vertical-align: middle;">
+                        <div id="navTxt2" class="unhidden" style="display:inline;"> Home</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <img src="images/contact.png" style="vertical-align: middle;">
+                        <div id="navTxt3" class="unhidden" style="display:inline;"> Contact</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <img src="images/task.png" style="vertical-align: middle;">
+                        <div id="navTxt4" class="unhidden" style="display:inline;"> Reminders</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <img src="images/calendar.png" style="vertical-align: middle;">
+                        <div id="navTxt5" class="unhidden" style="display:inline;"> Calendar</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <img src="images/add.png" style="vertical-align: middle;">
+                        <div id="navTxt6" class="unhidden" style="display:inline;"> Create List</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="content">
+            <div id="contentHeader">
+                Work - Inbox
+            </div>
+
+            <div id="createContainer">
+                <form name="add" onsubmit="return Task()">
+                    <input type="text" value="+ Add to-do item..." id="create" onblur="if (this.value == '') {this.value = '+ Add to-do item...';}" onfocus="if (this.value == '+ Add to-do item...') {this.value = '';}" />
+                    <input type="submit" style="position: absolute; left: -9999px"  />
+                </form>
+            </div>
+
+            <div id="textContent">
+                <!-- To-Do Items Here -->
+            </div>
+        </div>
+    </div>
+</body>
