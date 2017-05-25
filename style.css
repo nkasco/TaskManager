@@ -86,10 +86,6 @@ body{
     opacity: .75;
 }
 
-:focus{
-    background:blue;
-}
-
 #search{
     width: 200px;
     height: 25px;
