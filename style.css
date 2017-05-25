@@ -12,12 +12,12 @@ body{
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
 }
-
-/*#container{
-    width:100%;
-    display: flex;
-}*/
 
 #nav{
     position:fixed;
@@ -77,8 +77,17 @@ body{
 
 #todoItem{
     background: lightgray;
-    padding: 5 5 5 5;
-    margin-bottom: 5;
+    padding: 10;
+    margin-bottom: 1;
+}
+
+#todoItem:active{
+    background:#293F5A;
+    opacity: .75;
+}
+
+:focus{
+    background:blue;
 }
 
 #search{
@@ -94,12 +103,13 @@ body{
     flex-grow: 1;
     height:100%;
     margin-left: 250px;
-    color: white;
+    color: black;
 }
 
 #contentHeader{
     background: #293F5A;
-    padding: 16;
+    color: white;
+    padding: 15;
 }
 
 /* Add item div / input */
@@ -131,4 +141,5 @@ body{
 
 input[type=checkbox]:checked + label.strikethrough{
     text-decoration: line-through;
+    background-position: 0 -20px;
 }

@@ -75,6 +75,7 @@ var Task = function(){
     //Create checkbox and label
     var checkbox = document.createElement("input");
     checkbox.type = "checkbox";
+    checkbox.style.verticalAlign = "middle";
     checkbox.id = name.value;
 
     var label = document.createElement("label");
@@ -91,7 +92,7 @@ var Task = function(){
     var todos = document.getElementById("textContent");
     todos.appendChild(div);
 
-    //Revert input to default
+    //Revert input to default & deselect
     name.value = "+ Add to-do item...";
     name.blur();
 
