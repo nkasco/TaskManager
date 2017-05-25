@@ -4,8 +4,6 @@ var toggleNav = function(){
     var nav = document.getElementById("leftNav"); 
     var content = document.getElementById("content");
     var search = document.getElementById("searchli");
-    var user = document.getElementById("user");
-    var home = document.getElementById("home");
 
     //In-Progress: Get each <li> from leftNav to remove text from//
 
