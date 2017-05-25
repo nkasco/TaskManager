@@ -1,4 +1,11 @@
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
 body{
+    height: 100%;
+    overflow: auto;
     margin:0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-image: url(images/bg.jpg);
@@ -7,10 +14,10 @@ body{
     background-repeat: no-repeat;
 }
 
-#container{
+/*#container{
     width:100%;
     display: flex;
-}
+}*/
 
 #nav{
     position:fixed;
@@ -27,10 +34,7 @@ body{
     padding: 0;
     overflow: hidden;
     float:left;
-}
-
-#navExpand{
-    background: #242E3A;
+    position: relative;
 }
 
 #nav li a{
@@ -43,6 +47,21 @@ body{
 
 #nav li a:hover{
     background: lightgray;
+}
+
+#nav li:last-child { 
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.active{
+    background: #293F5A;
+    color: white;
+}
+
+#navExpand{
+    background: #242E3A;
 }
 
 #createList{
@@ -67,10 +86,6 @@ body{
     padding: 5 5 5 5;
 }
 
-#user{
-    vertical-align: middle;
-}
-
 #content{
     flex-grow: 1;
     height:100%;
@@ -83,6 +98,7 @@ body{
     padding: 16;
 }
 
+/* Add item div / input */
 #createContainer{
     margin: 10;
     opacity: 0.5;
@@ -100,5 +116,15 @@ body{
     padding: 0 5 5 5;
 }
 
-.hidden { display: none;}
-.unhidden { display: inline; }
+/* Hide / Show text when collapsing nav */
+.hidden {
+    display: none;
+
+}
+.unhidden {
+    display: inline;
+}
+
+input[type=checkbox]:checked + label.strikethrough{
+    text-decoration: line-through;
+}

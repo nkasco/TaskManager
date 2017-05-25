@@ -80,6 +80,7 @@ var Task = function(){
 
     var label = document.createElement("label");
     label.htmlFor = name.value;
+    label.className = "strikethrough";
     label.textContent = name.value;
 
     //Add to new div with ID "todoItem"
