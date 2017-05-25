@@ -51,7 +51,7 @@ var toggleSearch = function(){
 }
 
 var Search = function(){
-    var query = document.getElementById("search").value;    //Find search query
+    var query = document.getElementById("search").value.toUpperCase();    //Find search query
 
     //Gather To-Do Items
     var textContent = document.getElementById("textContent");
@@ -60,7 +60,7 @@ var Search = function(){
     //Loop through and match search criteria
     for (i = 0; i < todoItems.length; i++) {
         a = todoItems[i].getElementsByTagName("label")[0];
-        if (a.textContent.indexOf(query) > -1) {
+        if (a.textContent.toUpperCase().indexOf(query) > -1) {
             todoItems[i].style.display = "";
         } else {
             todoItems[i].style.display = "none";
