@@ -48,6 +48,7 @@ var toggleSearch = function(){
     }
 }
 
+//In-Progress: Convert search to filter and add a global search for searching all lists
 var Search = function(){
     var query = document.getElementById("search").value.toUpperCase();    //Find search query
 
