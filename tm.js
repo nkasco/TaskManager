@@ -50,6 +50,24 @@ var toggleSearch = function(){
     }
 }
 
+var Search = function(){
+    var query = document.getElementById("search").value;    //Find search query
+
+    //Gather To-Do Items
+    var textContent = document.getElementById("textContent");
+    var todoItems = textContent.getElementsByTagName("div");
+
+    //Loop through and match search criteria
+    for (i = 0; i < todoItems.length; i++) {
+        a = todoItems[i].getElementsByTagName("label")[0];
+        if (a.textContent.indexOf(query) > -1) {
+            todoItems[i].style.display = "";
+        } else {
+            todoItems[i].style.display = "none";
+        }
+    }
+}
+
 var Task = function(){
     //Capture input
     var name = document.getElementById("create");
