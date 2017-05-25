@@ -49,6 +49,10 @@ body{
     background: lightgray;
 }
 
+#nav li a img{
+    vertical-align: middle;
+}
+
 #nav li:last-child { 
     width: 100%;
     position: absolute;
