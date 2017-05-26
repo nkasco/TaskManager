@@ -123,3 +123,28 @@ function unhide(divID) {
         item.className=(item.className=='hidden')?'unhidden':'hidden';
     }
 }
+
+var login = function(){
+    var email = document.getElementById("user").textContent;
+    var password = document.getElementById("pass").textContent;
+    alert(email + " " + password);
+
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+    });
+}
+
+var register = function(){
+    var email = document.getElementById("user").textContent;
+    var password = document.getElementById("pass").value;
+
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ...
+    });
+}

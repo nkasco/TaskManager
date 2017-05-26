@@ -1,19 +1,21 @@
 <head>
     <title>Task Manager App</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
     <script>
     // Initialize Firebase
     var config = {
-        apiKey: "AIzaSyDO0Gc7DRfO8ypX-wdzz4iXbZZZRGQa8lw",
-        authDomain: "task-manager-ee225.firebaseapp.com",
-        databaseURL: "https://task-manager-ee225.firebaseio.com",
-        projectId: "task-manager-ee225",
-        storageBucket: "task-manager-ee225.appspot.com",
-        messagingSenderId: "544864379316"
+        apiKey: "AIzaSyBd0tlAD4SQRYWB4cCO6duwisvTJvY-fUw",
+        authDomain: "task-manager-509f7.firebaseapp.com",
+        databaseURL: "https://task-manager-509f7.firebaseio.com",
+        projectId: "task-manager-509f7",
+        storageBucket: "task-manager-509f7.appspot.com",
+        messagingSenderId: "797034578670"
     };
     firebase.initializeApp(config);
     </script>
+    
     <script language="Javascript" src="tm.js"></script>
 </head>
 <body>
@@ -74,15 +76,10 @@
             Work - Inbox
         </div>
 
-        <div id="createContainer">
-            <form name="add" onsubmit="return Task()">
-                <input type="text" value="+ Add to-do item..." id="create" onblur="if (this.value == '') {this.value = '+ Add to-do item...';}" onfocus="if (this.value == '+ Add to-do item...') {this.value = '';}" />
-                <input type="submit" style="position: absolute; left: -9999px"  />
-            </form>
-        </div>
-
-        <div id="textContent">
-            <!-- To-Do Items Generated Here -->
-        </div>
+        <form name="auth" onsubmit="register()">
+            <input type="text" value="username" id="user" />
+            <input type="text" value="" id="pass" />
+            <input type="submit" value="submit" />
+        </form>
     </div>
 </body>

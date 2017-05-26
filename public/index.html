@@ -1,0 +1,90 @@
+<head>
+    <title>Task Manager App</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+    <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyBd0tlAD4SQRYWB4cCO6duwisvTJvY-fUw",
+        authDomain: "task-manager-509f7.firebaseapp.com",
+        databaseURL: "https://task-manager-509f7.firebaseio.com",
+        projectId: "task-manager-509f7",
+        storageBucket: "task-manager-509f7.appspot.com",
+        messagingSenderId: "797034578670"
+    };
+    firebase.initializeApp(config);
+    </script>
+    
+    <script language="Javascript" src="tm.js"></script>
+</head>
+<body>
+    <div id="nav">
+        <ul id="leftNav" style="width: 250px;">
+            <li id="navExpand">
+                <a href="javascript:;" onclick="toggleNav()">
+                    <img src="images/squares.png">
+                </a><!--<a href="javascript:;" onclick="toggleSearch()" style="float:right;"><img src="images/search.png"></a>-->
+            </li>
+            <li id="searchli">
+                <center>
+                    <input type="text" value=" Search..." id="search" onblur="if (this.value == '') {this.value = ' Search...';}" onfocus="if (this.value == ' Search...') {this.value = '';}" onkeyup="Search()" />
+                </center>
+            </li>
+            <li id="user">
+                <a href="javascript:;">
+                    <img src="images/user.png" style="width:32px; height: 32px;">
+                    <div id="navTxt1" class="unhidden"> Username</div>
+                </a>
+            </li>
+            <li id="home" class="active">
+                <a href="javascript:;">
+                    <img src="images/home.png">
+                    <div id="navTxt2" class="unhidden"> Home</div>
+                </a>
+            </li>
+            <li id="contact">
+                <a href="javascript:;">
+                    <img src="images/contact.png">
+                    <div id="navTxt3" class="unhidden"> Contact</div>
+                </a>
+            </li>
+            <li id="reminders">
+                <a href="javascript:;">
+                    <img src="images/task.png">
+                    <div id="navTxt4" class="unhidden"> Reminders</div>
+                </a>
+            </li>
+            <li id="calendar">
+                <a href="javascript:;">
+                    <img src="images/calendar.png">
+                    <div id="navTxt5" class="unhidden"> Calendar</div>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img src="images/add.png">
+                    <div id="navTxt6" class="unhidden" style="color:#0099ff"> Create List</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="content">
+        <div id="contentHeader">
+            <!-- This will change with navigation, will need a js function-->
+            Work - Inbox
+        </div>
+
+        <div id="createContainer">
+            <form name="add" onsubmit="return Task()">
+                <input type="text" value="+ Add to-do item..." id="create" onblur="if (this.value == '') {this.value = '+ Add to-do item...';}" onfocus="if (this.value == '+ Add to-do item...') {this.value = '';}" />
+                <input type="submit" style="position: absolute; left: -9999px"  />
+            </form>
+        </div>
+
+        <div id="textContent">
+            <!-- To-Do Items Generated Here -->
+        </div>
+    </div>
+</body>
