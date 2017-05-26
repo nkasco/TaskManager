@@ -139,3 +139,35 @@ input[type=checkbox]:checked + label.strikethrough{
     text-decoration: line-through;
     background-position: 0 -20px;
 }
+
+#txtUsername, #txtPassword{
+    width: auto;
+    height: 50px;
+    font-size: 22pt;
+}
+
+#btnLogin, #btnRegister, #btnLogout{
+    background: #293F5A;
+    color: white;
+    font-size: 20pt;
+    padding: 10;
+    border: 0;
+    box-shadow:none;
+    border-radius: 0px;
+}
+
+#btnLogin:hover, #btnRegister:hover, #btnLogout:hover{
+    background: #242E3A;
+}
+
+#loginForm{
+    margin-top: 200px;
+}
+
+.center{
+    margin: auto;
+}
+
+#incorrectLogin{
+    color:red;
+}

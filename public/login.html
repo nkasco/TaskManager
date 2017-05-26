@@ -76,11 +76,24 @@
             Work - Inbox
         </div>
 
-        <input type="email" id="txtUsername" placeholder="Username" />
-        <input type="password" id="txtPassword" placeholder="Password" />
-        <button id="btnLogin">Log in</button>
-        <button id="btnRegister">Register</button>
-        <button id="btnLogout" class="hidden">Log out</button>
+        <div id="loginForm"><center>
+            <div id="incorrectLogin" class="hidden">
+                Invalid username/password, please try again.
+            </div>
+            <p>
+                <input type="email" id="txtUsername" placeholder="Username" />
+            </p>
+            <p>
+                <input type="password" id="txtPassword" placeholder="Password" />
+            </p>
+            <p>
+                <button id="btnLogin">Log in</button>
+                <button id="btnRegister">Register</button>
+            </p>
+            <p>
+                <button id="btnLogout" class="hidden">Log out</button>
+            </p></center>
+        </div>
         
     </div>
 </body>
