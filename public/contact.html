@@ -1,23 +1,22 @@
 <head>
     <title>Task Manager App</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    
+
     <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
     <script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyBd0tlAD4SQRYWB4cCO6duwisvTJvY-fUw",
-        authDomain: "task-manager-509f7.firebaseapp.com",
-        databaseURL: "https://task-manager-509f7.firebaseio.com",
-        projectId: "task-manager-509f7",
-        storageBucket: "task-manager-509f7.appspot.com",
-        messagingSenderId: "797034578670"
-    };
-    firebase.initializeApp(config);
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBd0tlAD4SQRYWB4cCO6duwisvTJvY-fUw",
+            authDomain: "task-manager-509f7.firebaseapp.com",
+            databaseURL: "https://task-manager-509f7.firebaseio.com",
+            projectId: "task-manager-509f7",
+            storageBucket: "task-manager-509f7.appspot.com",
+            messagingSenderId: "797034578670"
+        };
+        firebase.initializeApp(config);
     </script>
-    
     <script language="Javascript" src="tm.js"></script>
-    <script language="Javascript" src="home.js"></script>
+    <script language="Javascript" src="login.js"></script>
 </head>
 <body>
     <div id="nav">
@@ -38,14 +37,14 @@
                     <div id="navTxt1" class="unhidden"> Login/Sign Up</div>
                 </a>
             </li>
-            <li id="home" class="active">
+            <li id="home">
                 <a href="index.html">
                     <img src="images/home.png">
                     <div id="navTxt2" class="unhidden"> Home</div>
                 </a>
             </li>
             <li id="contact">
-                <a href="contact.html">
+                <a href="contact.html" class="active">
                     <img src="images/contact.png">
                     <div id="navTxt3" class="unhidden"> Contact</div>
                 </a>
@@ -77,15 +76,6 @@
             Work - Inbox
         </div>
 
-        <div id="createContainer">
-            <form name="add" onsubmit="return Task()">
-                <input type="text" value="+ Add to-do item..." id="create" onblur="if (this.value == '') {this.value = '+ Add to-do item...';}" onfocus="if (this.value == '+ Add to-do item...') {this.value = '';}" />
-                <input type="submit" style="position: absolute; left: -9999px"  />
-            </form>
-        </div>
-
-        <div id="textContent">
-            <!-- To-Do Items Generated Here -->
-        </div>
+        Contact
     </div>
 </body>
