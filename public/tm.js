@@ -1,5 +1,5 @@
-
-    var load = function(){
+window.addEventListener('load', 
+    function() {
         const txtUsername = document.getElementById("txtUsername");
         const txtPassword = document.getElementById("txtPassword");
         const btnLogin = document.getElementById("btnLogin");
@@ -32,12 +32,14 @@
             if(firebaseUser) {
                 console.log(firebaseUser);
                 btnLogout.classList.remove('hidden');
+                var username = document.getElementById('navTxt1');
+                username.textContent = " " + firebase.auth().currentUser.email;
             } else {
                 console.log("Not logged in");
                 btnLogout.classList.add('hidden');
             }
-        });    
-}
+        });
+    }, false);
 
 var storedNav;
 var toggleNav = function(){
