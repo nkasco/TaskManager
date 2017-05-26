@@ -124,27 +124,40 @@ function unhide(divID) {
     }
 }
 
-var login = function(){
-    var email = document.getElementById("user").textContent;
-    var password = document.getElementById("pass").textContent;
-    alert(email + " " + password);
+var email = document.getElementById("user");
+var pass = document.getElementById("pass");
+var btnLogin = document.getElementById("btnLogin");
+var btnRegister = document.getElementById("btnRegister");
+var btnLogout = document.getElementById("btnLogout");
 
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ...
-    });
-}
+btnLogin.addEventListener('click', e => {
+    const email = email.value;
+    const password = pass.value;
+    const auth = firebase.auth();
 
-var register = function(){
-    var email = document.getElementById("user").textContent;
-    var password = document.getElementById("pass").value;
+    const promise = auth.signInWithEmailAndPassword(email, password);
+    promise.catch(e => console.log(e.message));
+});
 
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // ...
-    });
-}
+btnRegister.addEventListener('click', e => {
+    const email = email.value;
+    const password = pass.value;
+    const auth = firebase.auth();
+
+    const promise = auth.createUserWithEmailAndPassword(email, password);
+    promise.catch(e => console.log(e.message));
+});
+
+btnLogout.addEventListener('click', e => {
+    firebase.auth.signOut();
+});
+
+firebase.auth().onAuthStateChanged(firebaseUser => {
+    if(firebaseUser) {
+        console.log(firebaseUser);
+        btnLogout.classList.remove('hidden');
+    } else {
+        console.log("Not logged in");
+        btnLogout.classList.add('hidden');
+    }
+});
