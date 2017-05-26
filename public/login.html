@@ -4,18 +4,17 @@
 
     <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
     <script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyBd0tlAD4SQRYWB4cCO6duwisvTJvY-fUw",
-        authDomain: "task-manager-509f7.firebaseapp.com",
-        databaseURL: "https://task-manager-509f7.firebaseio.com",
-        projectId: "task-manager-509f7",
-        storageBucket: "task-manager-509f7.appspot.com",
-        messagingSenderId: "797034578670"
-    };
-    firebase.initializeApp(config);
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBd0tlAD4SQRYWB4cCO6duwisvTJvY-fUw",
+            authDomain: "task-manager-509f7.firebaseapp.com",
+            databaseURL: "https://task-manager-509f7.firebaseio.com",
+            projectId: "task-manager-509f7",
+            storageBucket: "task-manager-509f7.appspot.com",
+            messagingSenderId: "797034578670"
+        };
+        firebase.initializeApp(config);
     </script>
-    
     <script language="Javascript" src="tm.js"></script>
 </head>
 <body>
@@ -71,15 +70,16 @@
     </div>
 
     <div id="content">
-        <div id="contentHeader">
+        <div id="contentHeader" onclick="load()">
             <!-- This will change with navigation, will need a js function-->
             Work - Inbox
         </div>
 
-        <input type="text" id="user" placeholder="Username" />
-        <input type="text" id="pass" placeholder="Password" />
+        <input type="email" id="txtUsername" placeholder="Username" />
+        <input type="password" id="txtPassword" placeholder="Password" />
         <button id="btnLogin">Log in</button>
         <button id="btnRegister">Register</button>
         <button id="btnLogout" class="hidden">Log out</button>
+        
     </div>
 </body>

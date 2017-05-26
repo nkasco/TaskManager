@@ -1,3 +1,44 @@
+
+    var load = function(){
+        const txtUsername = document.getElementById("txtUsername");
+        const txtPassword = document.getElementById("txtPassword");
+        const btnLogin = document.getElementById("btnLogin");
+        const btnRegister = document.getElementById("btnRegister");
+        const btnLogout = document.getElementById("btnLogout");
+
+        btnLogin.addEventListener("click", e => {
+            const email = txtUsername.value;
+            const password = txtPassword.value;
+            const auth = firebase.auth();
+
+            const promise = auth.signInWithEmailAndPassword(email, password);
+            promise.catch(e => console.log(e.message));
+        });
+
+        btnRegister.addEventListener("click", e => {
+            const email = txtUsername.value;
+            const password = txtPassword.value;
+            const auth = firebase.auth();
+
+            const promise = auth.createUserWithEmailAndPassword(email, password);
+            promise.catch(e => console.log(e.message));
+        });
+
+        btnLogout.addEventListener("click", e => {
+            firebase.auth().signOut();
+        });
+
+        firebase.auth().onAuthStateChanged(firebaseUser => {
+            if(firebaseUser) {
+                console.log(firebaseUser);
+                btnLogout.classList.remove('hidden');
+            } else {
+                console.log("Not logged in");
+                btnLogout.classList.add('hidden');
+            }
+        });    
+}
+
 var storedNav;
 var toggleNav = function(){
     //Expand or collapse navigation bar (tentative values)
@@ -123,41 +164,3 @@ function unhide(divID) {
         item.className=(item.className=='hidden')?'unhidden':'hidden';
     }
 }
-
-var email = document.getElementById("user");
-var pass = document.getElementById("pass");
-var btnLogin = document.getElementById("btnLogin");
-var btnRegister = document.getElementById("btnRegister");
-var btnLogout = document.getElementById("btnLogout");
-
-btnLogin.addEventListener('click', e => {
-    const email = email.value;
-    const password = pass.value;
-    const auth = firebase.auth();
-
-    const promise = auth.signInWithEmailAndPassword(email, password);
-    promise.catch(e => console.log(e.message));
-});
-
-btnRegister.addEventListener('click', e => {
-    const email = email.value;
-    const password = pass.value;
-    const auth = firebase.auth();
-
-    const promise = auth.createUserWithEmailAndPassword(email, password);
-    promise.catch(e => console.log(e.message));
-});
-
-btnLogout.addEventListener('click', e => {
-    firebase.auth.signOut();
-});
-
-firebase.auth().onAuthStateChanged(firebaseUser => {
-    if(firebaseUser) {
-        console.log(firebaseUser);
-        btnLogout.classList.remove('hidden');
-    } else {
-        console.log("Not logged in");
-        btnLogout.classList.add('hidden');
-    }
-});
