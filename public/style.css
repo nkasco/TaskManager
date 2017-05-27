@@ -40,7 +40,7 @@ body{
 #nav li a{
     display: block;
     color: black;
-    padding: 10 10 10 10;
+    padding: 8;
     text-decoration: none;
     text-align: left;
 }
@@ -61,11 +61,19 @@ body{
 
 .active{
     background: #293F5A;
-    color: white;
+    color: white !important;
+}
+
+.active:hover{
+    background: #242E3A !important;
 }
 
 #navExpand{
     background: #242E3A;
+}
+
+#navExpand:hover{
+    background: #1d252f !important;
 }
 
 #createList{
@@ -141,7 +149,7 @@ input[type=checkbox]:checked + label.strikethrough{
 }
 
 #txtUsername, #txtPassword{
-    width: auto;
+    width: 350px;
     height: 50px;
     font-size: 22pt;
 }
@@ -170,4 +178,31 @@ input[type=checkbox]:checked + label.strikethrough{
 
 #incorrectLogin{
     color:red;
+}
+
+#userContainer{
+    margin: 10;
+}
+
+#userHeader{
+    margin-bottom: 10px;
+    padding: 5px;
+    background: #2E3439;
+    color: #bbc0c3;
+    height: 41px;
+    font-size: 22pt;
+}
+
+#userOverview, #userToday{
+    width: 300px;
+    height: 300px;
+    background: #2E3439;
+    color: #788087;
+    padding: 10;
+    margin-right: 10;
+    display: inline-block;
+}
+
+#btnLogout{
+    float: right;
 }

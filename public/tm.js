@@ -50,20 +50,24 @@ var toggleSearch = function(){
 
 //In-Progress: Convert search to filter and add a global search for searching all lists
 var Search = function(){
-    var query = document.getElementById("search").value.toUpperCase();    //Find search query
+    if(window.location.href.indexOf("index") > -1){
+        var query = document.getElementById("search").value.toUpperCase();    //Find search query
 
-    //Gather To-Do Items
-    var textContent = document.getElementById("textContent");
-    var todoItems = textContent.getElementsByTagName("div");
+        //Gather To-Do Items
+        var textContent = document.getElementById("textContent");
+        var todoItems = textContent.getElementsByTagName("div");
 
-    //Loop through and match search criteria
-    for (i = 0; i < todoItems.length; i++) {
-        a = todoItems[i].getElementsByTagName("label")[0];
-        if (a.textContent.toUpperCase().indexOf(query) > -1) {
-            todoItems[i].style.display = "";
-        } else {
-            todoItems[i].style.display = "none";
+        //Loop through and match search criteria
+        for (i = 0; i < todoItems.length; i++) {
+            a = todoItems[i].getElementsByTagName("label")[0];
+            if (a.textContent.toUpperCase().indexOf(query) > -1) {
+                todoItems[i].style.display = "";
+            } else {
+                todoItems[i].style.display = "none";
+            }
         }
+    } else {
+        console.log("Global search coming soon");
     }
 }
 

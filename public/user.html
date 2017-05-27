@@ -17,7 +17,7 @@
     </script>
     
     <script language="Javascript" src="tm.js"></script>
-    <script language="Javascript" src="home.js"></script>
+    <script language="Javascript" src="user.js"></script>
 </head>
 <body>
     <div id="nav">
@@ -33,13 +33,13 @@
                 </center>
             </li>
             <li id="user">
-                <a href="login.html">
+                <a href="login.html" class="active">
                     <img src="images/user.png" style="width:32px; height: 32px;">
                     <div id="navTxt1" class="unhidden"></div>
                 </a>
             </li>
             <li id="home">
-                <a href="index.html" class="active">
+                <a href="index.html">
                     <img src="images/home.png">
                     <div id="navTxt2" class="unhidden"> Home</div>
                 </a>
@@ -77,15 +77,19 @@
             Work - Inbox
         </div>
 
-        <div id="createContainer">
-            <form name="add" onsubmit="return Task()">
-                <input type="text" value="+ Add to-do item..." id="create" onblur="if (this.value == '') {this.value = '+ Add to-do item...';}" onfocus="if (this.value == '+ Add to-do item...') {this.value = '';}" />
-                <input type="submit" style="position: absolute; left: -9999px"  />
-            </form>
-        </div>
+        <div id="userContainer">
+            <button id="btnLogout">Log out</button>
+            <div id="userHeader"></div>
 
-        <div id="textContent">
-            <!-- To-Do Items Generated Here -->
+            <div id="userOverview">
+                <b>Overview</b>
+            </div>
+
+            <div id="userToday">
+                <b>Today</b>
+            </div>
+
+            
         </div>
     </div>
 </body>

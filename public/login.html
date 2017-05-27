@@ -21,8 +21,8 @@
 <body>
     <div id="nav">
         <ul id="leftNav" style="width: 250px;">
-            <li id="navExpand">
-                <a href="javascript:;" onclick="toggleNav()">
+            <li>
+                <a href="javascript:;" onclick="toggleNav()" id="navExpand">
                     <img src="images/squares.png">
                 </a><!--<a href="javascript:;" onclick="toggleSearch()" style="float:right;"><img src="images/search.png"></a>-->
             </li>
@@ -76,23 +76,22 @@
             Work - Inbox
         </div>
 
-        <div id="loginForm"><center>
-            <div id="incorrectLogin" class="hidden">
-                Invalid username/password, please try again.
-            </div>
-            <p>
-                <input type="email" id="txtUsername" placeholder="Username" />
-            </p>
-            <p>
-                <input type="password" id="txtPassword" placeholder="Password" />
-            </p>
-            <p>
-                <button id="btnLogin">Log in</button>
-                <button id="btnRegister">Register</button>
-            </p>
-            <p>
-                <button id="btnLogout" class="hidden">Log out</button>
-            </p></center>
+        <div id="loginForm">
+            <center>
+                <div id="incorrectLogin" class="hidden">
+                    Invalid username/password, please try again.
+                </div>
+                <p>
+                    <input type="email" id="txtUsername" placeholder="Username" />
+                </p>
+                <p>
+                    <input type="password" id="txtPassword" placeholder="Password" />
+                </p>
+                <p style="width: 350px;" align="right">
+                    <button id="btnLogin">Log in</button>
+                    <button id="btnRegister">Register</button>
+                </p>
+            </center>
         </div>
         
     </div>
