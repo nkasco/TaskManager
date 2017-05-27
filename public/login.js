@@ -20,7 +20,8 @@ window.addEventListener('load',
 
             const promise = auth.signInWithEmailAndPassword(email, password);
             promise.catch(e => {
-                console.log(e.message)
+                console.log(e.message);
+                invalid.textContent = e.message;
                 invalid.classList.remove('hidden');
             });
         });
@@ -29,9 +30,14 @@ window.addEventListener('load',
             const email = txtUsername.value;
             const password = txtPassword.value;
             const auth = firebase.auth();
+            var invalid = document.getElementById('incorrectLogin');
 
             const promise = auth.createUserWithEmailAndPassword(email, password);
-            promise.catch(e => console.log(e.message));
+            promise.catch(e => {
+                console.log(e.message);
+                invalid.textContent = e.message;
+                invalid.classList.remove('hidden');
+            });
         });
 
         firebase.auth().onAuthStateChanged(firebaseUser => {
