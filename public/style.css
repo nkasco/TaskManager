@@ -154,7 +154,7 @@ input[type=checkbox]:checked + label.strikethrough{
     font-size: 22pt;
 }
 
-#btnLogin, #btnRegister, #btnLogout{
+#btnLogin, #btnRegister, #btnLogout, #btnSubmit{
     background: #293F5A;
     color: white;
     font-size: 20pt;
@@ -164,7 +164,7 @@ input[type=checkbox]:checked + label.strikethrough{
     border-radius: 0px;
 }
 
-#btnLogin:hover, #btnRegister:hover, #btnLogout:hover{
+#btnLogin:hover, #btnRegister:hover, #btnLogout:hover, #btnSubmit:hover{
     background: #242E3A;
 }
 
@@ -205,4 +205,23 @@ input[type=checkbox]:checked + label.strikethrough{
 
 #btnLogout{
     float: right;
+}
+
+#contactContent{
+    margin:10;
+    color: white;
+}
+
+#contactName, #contactEmail{
+    width: 300px;
+    padding: 5;
+    font-size: 18pt;
+    margin-bottom: 5;
+}
+
+#contactMessage{
+    width: 450px;
+    height: 300px;
+    padding: 5;
+    margin-bottom: 5;
 }
