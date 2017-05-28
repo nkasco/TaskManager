@@ -97,10 +97,11 @@ body{
 #search{
     width: 200px;
     height: 25px;
+    margin: 5;
 }
 
-#searchli{
-    padding: 5 5 5 5;
+#searchToggle{
+    float: right;
 }
 
 #content{
@@ -136,11 +137,11 @@ body{
 
 /* Hide / Show text when collapsing nav */
 .hidden {
-    display: none;
+    display: none !important;
 
 }
 .unhidden {
-    display: inline;
+    display: inline !important;
 }
 
 input[type=checkbox]:checked + label.strikethrough{
@@ -199,19 +200,19 @@ input[type=checkbox]:checked + label.strikethrough{
     background: #2E3439;
     color: #788087;
     padding: 10;
-    margin-right: 10;
+    margin-right: 5;
     margin-bottom: 10;
     display: inline-block;
     opacity: .95;
 }
 
 #userTrends{
-    width: 450px;
+    width: 415px;
     height: 300px;
     background: #2E3439;
     color: #788087;
     padding: 10;
-    margin-right: 10;
+    margin-right: 5;
     margin-bottom: 10;
     display: inline-block;
     opacity: .95;
@@ -219,7 +220,7 @@ input[type=checkbox]:checked + label.strikethrough{
 
 #userMonthly{
     width: 700px;
-    height: 450px;
+    height: 300px;
     background: #2E3439;
     color: #788087;
     padding: 10;
@@ -228,12 +229,11 @@ input[type=checkbox]:checked + label.strikethrough{
 }
 
 #userListsProductivity{
-    width: 300px;
+    width: 350px;
     height: 300px;
     background: #2E3439;
     color: #788087;
     padding: 10;
-    margin-right: 10;
     margin-bottom: 10;
     display: inline-block;
     opacity: .95;
@@ -255,7 +255,7 @@ input[type=checkbox]:checked + label.strikethrough{
 #contactName, #contactEmail{
     width: 300px;
     padding: 5;
-    font-size: 18pt;
+    font-size: 16pt;
     margin-bottom: 5;
 }
 
@@ -264,4 +264,5 @@ input[type=checkbox]:checked + label.strikethrough{
     height: 300px;
     padding: 5;
     margin-bottom: 5;
+    font-size: 14pt;
 }

@@ -22,11 +22,14 @@
     <div id="nav">
         <ul id="leftNav" style="width: 250px;">
             <li>
+                <a href="javascript:;" onclick="toggleSearch()" id="searchToggle">
+                    <img src="images/search.png">
+                </a>
                 <a href="javascript:;" onclick="toggleNav()" id="navExpand">
                     <img src="images/squares.png">
-                </a><!--<a href="javascript:;" onclick="toggleSearch()" style="float:right;"><img src="images/search.png"></a>-->
+                </a>
             </li>
-            <li id="searchli">
+            <li id="searchli" class="hidden">
                 <center>
                     <input type="text" value=" Search..." id="search" onblur="if (this.value == '') {this.value = ' Search...';}" onfocus="if (this.value == ' Search...') {this.value = '';}" onkeyup="Search()" />
                 </center>
