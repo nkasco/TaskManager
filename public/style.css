@@ -39,7 +39,7 @@ body{
 
 #nav li a{
     display: block;
-    color: black;
+    color: #222222;
     padding: 8;
     text-decoration: none;
     text-align: left;
@@ -123,8 +123,8 @@ body{
 }
 
 #create{
-    font-size: 22pt;
-    height: 55px;
+    font-size: 18pt;
+    height: 45px;
     width: 100%;
     background: #d3d3d3;
     color: #000011;
@@ -154,17 +154,17 @@ input[type=checkbox]:checked + label.strikethrough{
     font-size: 22pt;
 }
 
-#btnLogin, #btnRegister, #btnLogout, #btnSubmit{
+#btnLogin, #btnRegister, #btnLogout, #btnSubmit, #btnSettings{
     background: #293F5A;
     color: white;
-    font-size: 20pt;
+    font-size: 18pt;
     padding: 10;
     border: 0;
     box-shadow:none;
     border-radius: 0px;
 }
 
-#btnLogin:hover, #btnRegister:hover, #btnLogout:hover, #btnSubmit:hover{
+#btnLogin:hover, #btnRegister:hover, #btnLogout:hover, #btnSubmit:hover, #btnSettings:hover{
     background: #242E3A;
 }
 
@@ -189,8 +189,8 @@ input[type=checkbox]:checked + label.strikethrough{
     padding: 5px;
     background: #2E3439;
     color: #bbc0c3;
-    height: 41px;
-    font-size: 22pt;
+    height: 38px;
+    font-size: 20pt;
 }
 
 #userOverview, #userToday{
@@ -239,8 +239,12 @@ input[type=checkbox]:checked + label.strikethrough{
     opacity: .95;
 }
 
-#btnLogout{
+#btnSettings, #btnLogout{
     float: right;
+}
+
+#btnSettings{
+    margin-right: 5px;
 }
 
 #contactContent{
