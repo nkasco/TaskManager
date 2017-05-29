@@ -14,6 +14,7 @@ var toggleNav = function(){
         //Hide Search
         search.hidden = true;
         searchToggle.classList.add('hidden');
+        if(search.classList != 'hidden'){ search.className = 'hidden'}
 
     } else if(nav.style.width != "250px"){
         nav.style.width = "250px";
@@ -44,7 +45,11 @@ var toggleSearch = function(){
     var search = document.getElementById("searchli");
 
     if(search){
-        search.className=(search.className=='hidden')?'unhidden':'hidden';
+        if(search.className == 'hidden'){
+            search.className = 'unhidden';
+        } else {
+            search.className = 'hidden';
+        }
     }
 }
 
