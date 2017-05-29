@@ -4,16 +4,18 @@
     
     <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
     <script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyBd0tlAD4SQRYWB4cCO6duwisvTJvY-fUw",
-        authDomain: "task-manager-509f7.firebaseapp.com",
-        databaseURL: "https://task-manager-509f7.firebaseio.com",
-        projectId: "task-manager-509f7",
-        storageBucket: "task-manager-509f7.appspot.com",
-        messagingSenderId: "797034578670"
-    };
-    firebase.initializeApp(config);
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBd0tlAD4SQRYWB4cCO6duwisvTJvY-fUw",
+            authDomain: "task-manager-509f7.firebaseapp.com",
+            databaseURL: "https://task-manager-509f7.firebaseio.com",
+            projectId: "task-manager-509f7",
+            storageBucket: "task-manager-509f7.appspot.com",
+            messagingSenderId: "797034578670"
+        };
+        firebase.initializeApp(config);
+
+        var database = firebase.database();
     </script>
     
     <script language="Javascript" src="tm.js"></script>
