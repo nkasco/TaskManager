@@ -103,4 +103,9 @@ var addResizeEvent = function(object, type, callback) {
 
 addResizeEvent(window, "resize", function(event) {
   //TODO: Add conditions if size is less than X
+  //Minimum height to display nav: 350 (not including search)
+  if(window.innerWidth < 960){
+      console.log("less than 960");
+      //Add adjustment handlers here
+  }
 });

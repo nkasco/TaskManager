@@ -195,7 +195,7 @@ input[type=checkbox]:checked + label.strikethrough{
 }
 
 #userOverview, #userToday{
-    width: 300px;
+    width: 25%;
     height: 300px;
     background: #2E3439;
     color: #788087;
@@ -207,7 +207,7 @@ input[type=checkbox]:checked + label.strikethrough{
 }
 
 #userTrends{
-    width: 415px;
+    width: 37%;
     height: 300px;
     background: #2E3439;
     color: #788087;
@@ -219,7 +219,7 @@ input[type=checkbox]:checked + label.strikethrough{
 }
 
 #userMonthly{
-    width: 700px;
+    width: 65%;
     height: 300px;
     background: #2E3439;
     color: #788087;
@@ -229,7 +229,7 @@ input[type=checkbox]:checked + label.strikethrough{
 }
 
 #userListsProductivity{
-    width: 350px;
+    width: 25%;
     height: 300px;
     background: #2E3439;
     color: #788087;
