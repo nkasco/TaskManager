@@ -1,5 +1,4 @@
 var userID = null;
-var initialTaskLoad = false;
 
 window.addEventListener('load', 
     function() {
@@ -10,10 +9,7 @@ window.addEventListener('load',
                 console.log(firebaseUser);                
                 username.textContent = " " + firebase.auth().currentUser.email;
                 userID = firebase.auth().currentUser.uid;
-                if(initialTaskLoad == false){
-                    getCurrentList();
-                    initialTaskLoad = true;
-                }
+                getCurrentList();
             } else {
                 console.log("Not logged in");
                 username.textContent = " Login/Sign Up";
@@ -22,7 +18,7 @@ window.addEventListener('load',
     }, false);
 
 function getCurrentList(){
-    //Firebase read operation
+    //Firebase read operation on page load (only occurs once)
     var tasksRef = database.ref('users/' + userID + '/Tasks/').once('value').then(function(snapshot) {;
         snapshot.forEach(function(childSnapshot) {
         var childData = childSnapshot.val();
@@ -79,6 +75,7 @@ var Task = function(){
     var todos = document.getElementById("textContent");
     todos.appendChild(div);
 
+    //Update Firebase
     writeUserData(userID, name.value);
 
     //Revert input to default & deselect
@@ -89,21 +86,8 @@ var Task = function(){
     return false;
 }
 
-Task.prototype.complete = function(){
-    this.completed = true;
-    console.log("complete!");
-}
-
-Task.prototype.save = function(){
-    //Save Function
-}
-
 var List = function(name){
     this.name = name;
-}
-
-List.prototype.save = function(){
-    //Save Function
 }
 
 function writeUserData(userID, taskMessage) {
