@@ -78,10 +78,6 @@ function unhide(divID) {
     }
 }
 
-function getCurrentList(){
-    //Firebase read operation and div #contentHeader.textContent update here
-}
-
 function loginUserLink(){
     firebase.auth().onAuthStateChanged(firebaseUser => {
         var user = document.getElementById('login');

@@ -1,20 +1,58 @@
 var userID = null;
+var initialTaskLoad = false;
 
 window.addEventListener('load', 
     function() {
-        firebase.auth().onAuthStateChanged(firebaseUser => {
-            var username = document.getElementById('navTxt1');
+        var username = document.getElementById('navTxt1');
 
+        firebase.auth().onAuthStateChanged(firebaseUser => {
             if(firebaseUser) {
                 console.log(firebaseUser);                
                 username.textContent = " " + firebase.auth().currentUser.email;
                 userID = firebase.auth().currentUser.uid;
+                if(initialTaskLoad == false){
+                    getCurrentList();
+                    initialTaskLoad = true;
+                }
             } else {
                 console.log("Not logged in");
                 username.textContent = " Login/Sign Up";
             }
         });
     }, false);
+
+function getCurrentList(){
+    //Firebase read operation
+    var tasksRef = database.ref('users/' + userID + '/Tasks/').once('value').then(function(snapshot) {;
+        snapshot.forEach(function(childSnapshot) {
+        var childData = childSnapshot.val();
+        
+        addListItem(childData);
+        });
+    });
+}
+
+function addListItem(name){
+    //Create checkbox and label
+    var checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.style.verticalAlign = "middle";
+    checkbox.id = name.taskMessage;
+
+    var label = document.createElement("label");
+    label.htmlFor = name.taskMessage;
+    label.className = "strikethrough";
+    label.textContent = name.taskMessage;
+
+    //Add to new div with ID "todoItem"
+    var div = document.createElement("div");
+    div.id = "todoItem";
+    div.innerHTML = checkbox.outerHTML + label.outerHTML;
+
+    //Add new Task to page
+    var todos = document.getElementById("textContent");
+    todos.appendChild(div);
+}
 
 var Task = function(){
     //Capture input
@@ -76,9 +114,3 @@ function writeUserData(userID, taskMessage) {
         taskList: currentList*/
     });
 }
-
-/*function getTasks(){
-    firebase.database().ref('/users/' + userID + '/').once('value').then(function(snapshot) {
-        var taskList = snapshot.val().username;
-    });
-}*/
