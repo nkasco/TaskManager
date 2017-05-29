@@ -13,6 +13,7 @@ window.addEventListener('load',
             } else {
                 console.log("Not logged in");
                 username.textContent = " Login/Sign Up";
+                window.location = "login.html";
             }
         });
     }, false);
