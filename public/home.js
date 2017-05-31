@@ -20,6 +20,9 @@ window.addEventListener('load',
 
 function getCurrentList(){
     //Firebase read operation on page load (only occurs once)
+
+    //Get the current list from Firebase, then get the list items
+
     var tasksRef = database.ref('users/' + userID + '/Tasks/').once('value').then(function(snapshot) {;
         snapshot.forEach(function(childSnapshot) {
         var childData = childSnapshot.val();
@@ -89,6 +92,23 @@ var Task = function(){
 
 var List = function(name){
     this.name = name;
+    var leftNav = document.getElementById('leftNav');
+
+    var li = document.createElement('li');
+
+    var img = document.createElement('img');
+    img.src = "images/list.png";
+
+    var a = document.createElement('a');
+    li.appendChild(a);
+    a.innerHTML = img.outerHTML + " " + name;
+    a.href = "#";
+
+    leftNav.appendChild(li);
+
+    //writeListData(userID, name);
+
+    return false;
 }
 
 function writeUserData(userID, taskMessage) {
@@ -98,4 +118,13 @@ function writeUserData(userID, taskMessage) {
         taskMessage: taskMessage/*,
         taskList: currentList*/
     });
+}
+
+function writeListData(userID, listName){
+    var listKey = firebase.database().ref().child('tasks').push().key;
+
+    firebase.database().ref('users/' + userID + '/Tasks/' + listKey).set({
+    listName: listName/*,
+    taskList: currentList*/
+    });   
 }
