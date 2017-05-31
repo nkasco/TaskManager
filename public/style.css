@@ -91,6 +91,7 @@ body{
 
 #todoItem:active{
     background:#293F5A;
+    color: white;
     opacity: .75;
 }
 
