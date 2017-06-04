@@ -90,8 +90,9 @@ var Task = function(){
     return false;
 }
 
-var List = function(name){
-    this.name = name;
+var List = function(){
+    var name = document.getElementById('listName').value;
+
     var leftNav = document.getElementById('leftNav');
 
     var li = document.createElement('li');
@@ -106,7 +107,7 @@ var List = function(name){
 
     leftNav.appendChild(li);
 
-    //writeListData(userID, name);
+    writeListData(userID, name);
 
     return false;
 }
@@ -123,8 +124,7 @@ function writeUserData(userID, taskMessage) {
 function writeListData(userID, listName){
     var listKey = firebase.database().ref().child('tasks').push().key;
 
-    firebase.database().ref('users/' + userID + '/Tasks/' + listKey).set({
-    listName: listName/*,
-    taskList: currentList*/
+    firebase.database().ref('users/' + userID + '/Lists/' + listKey).set({
+    listName: listName
     });   
 }

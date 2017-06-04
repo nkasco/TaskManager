@@ -156,7 +156,7 @@ input[type=checkbox]:checked + label.strikethrough{
     font-size: 22pt;
 }
 
-#btnLogin, #btnRegister, #btnLogout, #btnSubmit, #btnSettings{
+#btnLogin, #btnRegister, #btnLogout, #btnSubmit, #btnSettings, #btnSubmitList, #btnCancel{
     background: #293F5A;
     color: white;
     font-size: 18pt;
@@ -166,7 +166,7 @@ input[type=checkbox]:checked + label.strikethrough{
     border-radius: 0px;
 }
 
-#btnLogin:hover, #btnRegister:hover, #btnLogout:hover, #btnSubmit:hover, #btnSettings:hover{
+#btnLogin:hover, #btnRegister:hover, #btnLogout:hover, #btnSubmit:hover, #btnSettings:hover, #btnSubmitList:hover, #btnCancel:hover{
     background: #242E3A;
 }
 
@@ -265,5 +265,19 @@ input[type=checkbox]:checked + label.strikethrough{
     height: 300px;
     padding: 5;
     margin-bottom: 5;
+    font-size: 14pt;
+}
+
+#createList{
+    float: right;
+    position: relative;
+    left: -50%; /* or right 50% */
+    text-align: left;
+    padding: 75px;
+    background: #2E3439;
+    opacity: .9;
+}
+
+#listName{
     font-size: 14pt;
 }
