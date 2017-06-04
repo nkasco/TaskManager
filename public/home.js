@@ -1,4 +1,5 @@
 var userID = null;
+var currentList = null;
 
 window.addEventListener('load', 
     function() {
@@ -91,23 +92,27 @@ var Task = function(){
 }
 
 var List = function(){
-    var name = document.getElementById('listName').value;
+    var name = document.getElementById('listName');
 
-    var leftNav = document.getElementById('leftNav');
+    if(name.value != ""){
+        var leftNav = document.getElementById('leftNav');
 
-    var li = document.createElement('li');
+        var li = document.createElement('li');
 
-    var img = document.createElement('img');
-    img.src = "images/list.png";
+        var img = document.createElement('img');
+        img.src = "images/list.png";
 
-    var a = document.createElement('a');
-    li.appendChild(a);
-    a.innerHTML = img.outerHTML + " " + name;
-    a.href = "#";
+        var a = document.createElement('a');
+        li.appendChild(a);
+        a.innerHTML = img.outerHTML + " " + name.value;
+        a.href = "#";
 
-    leftNav.appendChild(li);
+        leftNav.appendChild(li);
 
-    writeListData(userID, name);
+        writeListData(userID, name.value);
+        name.value = null;
+        unhide('createList');
+    }
 
     return false;
 }
