@@ -12,6 +12,8 @@ window.addEventListener('load',
             if(firebaseUser) {
                 var user = firebase.auth().currentUser.email
                 userHeader.textContent = user;
+            } else {
+                window.location = "login.html";
             }
         });
     }, false);
