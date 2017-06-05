@@ -1,3 +1,48 @@
+var userID = null;
+var currentList = null;
+
+window.addEventListener('load', 
+    function() {
+        firebase.auth().onAuthStateChanged(firebaseUser => {
+            var username = document.getElementById('navTxt1');
+            
+            if(firebaseUser) {
+                console.log(firebaseUser);                
+                username.textContent = " " + firebase.auth().currentUser.email;
+                userID = firebase.auth().currentUser.uid;
+                loadLists();
+            } else {
+                console.log("Not logged in");
+                username.textContent = " Login/Sign Up";
+            }
+        });
+    }, false);
+
+function loadLists(){
+    var listsRef = database.ref('users/' + userID + '/Lists/').once('value').then(function(snapshot) {;
+        snapshot.forEach(function(childSnapshot) {
+        var childData = childSnapshot.val();
+        
+        var leftNav = document.getElementById('leftNav');
+        var lastLi = leftNav.lastElementChild;
+
+        var li = document.createElement('li');
+
+        var img = document.createElement('img');
+        img.src = "images/list.png";
+
+        var a = document.createElement('a');
+        li.appendChild(a);
+        a.innerHTML = img.outerHTML + " " + childData.listName;
+        a.href = "#";
+
+        leftNav.lastElementChild.remove();
+        leftNav.appendChild(li);
+        leftNav.appendChild(lastLi);
+        });
+    });
+}
+
 var toggleNav = function(){
     //Expand or collapse navigation bar (tentative values)
     var nav = document.getElementById("leftNav"); 

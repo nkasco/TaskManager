@@ -278,6 +278,6 @@ input[type=checkbox]:checked + label.strikethrough{
     opacity: .9;
 }
 
-#listName{
+#listName, #lists{
     font-size: 14pt;
 }

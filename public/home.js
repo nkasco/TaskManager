@@ -1,20 +1,8 @@
-var userID = null;
-var currentList = null;
-
 window.addEventListener('load', 
     function() {
-        var username = document.getElementById('navTxt1');
-
         firebase.auth().onAuthStateChanged(firebaseUser => {
             if(firebaseUser) {
-                console.log(firebaseUser);                
-                username.textContent = " " + firebase.auth().currentUser.email;
-                userID = firebase.auth().currentUser.uid;
                 getCurrentList();
-            } else {
-                console.log("Not logged in");
-                username.textContent = " Login/Sign Up";
-                window.location = "login.html";
             }
         });
     }, false);
@@ -96,6 +84,7 @@ var List = function(){
 
     if(name.value != ""){
         var leftNav = document.getElementById('leftNav');
+        var lastLi = leftNav.lastElementChild;
 
         var li = document.createElement('li');
 
@@ -107,7 +96,9 @@ var List = function(){
         a.innerHTML = img.outerHTML + " " + name.value;
         a.href = "#";
 
+        leftNav.lastElementChild.remove();
         leftNav.appendChild(li);
+        leftNav.appendChild(lastLi);
 
         writeListData(userID, name.value);
         name.value = null;
