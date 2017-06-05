@@ -43,12 +43,15 @@ var toggleNav = function(){
 
 var toggleSearch = function(){
     var search = document.getElementById("searchli");
+    var searchbox = document.getElementById('search');
 
     if(search){
         if(search.className == 'hidden'){
             search.className = 'unhidden';
+            searchbox.focus();
         } else {
             search.className = 'hidden';
+            searchbox.blur();
         }
     }
 }
