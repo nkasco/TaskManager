@@ -152,21 +152,21 @@ function loginUserLink(){
 
 function loadList(selectedListName){
     clearListItems();
-    
+
     var divCreateContainer = document.createElement('div');
     divCreateContainer.id = "createContainer";
 
     var form = document.createElement('form');
     form.name = "add";
-    form.onsubmit = "return Task()";
+    form.onsubmit = function(){return Task()};
     divCreateContainer.appendChild(form);
 
     var text = document.createElement('input');
     text.type = "text";
     text.value = "+ Add to-do item...";
     text.id = "create";
-    text.onblur = "if (this.value == '') {this.value = '+ Add to-do item...';}";
-    text.onfocus = "if (this.value == '+ Add to-do item...') {this.value = '';}";
+    text.onblur = function(){if(this.value == '') {this.value = '+ Add to-do item...';}};
+    text.onfocus = function(){if (this.value == '+ Add to-do item...') {this.value = '';}};
     form.appendChild(text);
 
     var submit = document.createElement('input');
@@ -313,6 +313,8 @@ var List = function(){
         leftNav.appendChild(li);
         leftNav.appendChild(lastLi);
 
+        highlightNavItem(a);
+        currentList = name.value;
         writeListData(userID, name.value);
         name.value = null;
         unhide('createList');
