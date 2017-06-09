@@ -151,8 +151,38 @@ function loginUserLink(){
 }
 
 function loadList(selectedListName){
+    clearListItems();
+    
+    var divCreateContainer = document.createElement('div');
+    divCreateContainer.id = "createContainer";
+
+    var form = document.createElement('form');
+    form.name = "add";
+    form.onsubmit = "return Task()";
+    divCreateContainer.appendChild(form);
+
+    var text = document.createElement('input');
+    text.type = "text";
+    text.value = "+ Add to-do item...";
+    text.id = "create";
+    text.onblur = "if (this.value == '') {this.value = '+ Add to-do item...';}";
+    text.onfocus = "if (this.value == '+ Add to-do item...') {this.value = '';}";
+    form.appendChild(text);
+
+    var submit = document.createElement('input');
+    submit.type = "submit";
+    submit.style = "position: absolute; left: -9999px"
+    form.appendChild(submit);
+
+    var contentAreas = ["textContent","contactContent","userContainer"];
+
+    contentAreas.forEach(function(content) {
+        if(document.getElementById(content)){
+            document.getElementById(content).appendChild(divCreateContainer);
+        }
+    }, this);    
+
     var tasksRef = database.ref('users/' + userID + '/Tasks/').once('value').then(function(snapshot) {;
-        clearListItems();
         snapshot.forEach(function(childSnapshot) {
         var childData = childSnapshot.val();
         
@@ -191,7 +221,7 @@ function addListItem(name){
     div.innerHTML = checkbox.outerHTML + label.outerHTML;
 
     //Add new Task to page
-    var contentAreas = ["textContent","contactContent","userContent"];
+    var contentAreas = ["textContent","contactContent","userContainer"];
 
     contentAreas.forEach(function(content) {
         if(document.getElementById(content)){
@@ -214,6 +244,46 @@ function highlightNavItem(item){
 
     //Set selected item as active
     item.className=(item.className=='active')?'':'active';
+}
+
+var Task = function(){
+    //Capture input
+    var name = document.getElementById("create");
+
+    //Create checkbox and label
+    var checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.style.verticalAlign = "middle";
+    checkbox.id = name.value;
+
+    var label = document.createElement("label");
+    label.htmlFor = name.value;
+    label.className = "strikethrough";
+    label.textContent = name.value;
+
+    //Add to new div with ID "todoItem"
+    var div = document.createElement("div");
+    div.id = "todoItem";
+    div.innerHTML = checkbox.outerHTML + label.outerHTML;
+
+    //Add new Task to page
+    var contentAreas = ["textContent","contactContent","userContainer"];
+    contentAreas.forEach(function(content) {
+        if(document.getElementById(content)){
+            var todos = document.getElementById(content);
+            todos.appendChild(div);
+        }
+    }, this);
+
+    //Update Firebase
+    writeUserData(userID, name.value);
+
+    //Revert input to default & deselect
+    name.value = "+ Add to-do item...";
+    name.blur();
+
+    //Returning false to not make page refresh
+    return false;
 }
 
 var List = function(){

@@ -82,13 +82,6 @@
             Work - Inbox
         </div>
 
-        <div id="createContainer">
-            <form name="add" onsubmit="return Task()">
-                <input type="text" value="+ Add to-do item..." id="create" onblur="if (this.value == '') {this.value = '+ Add to-do item...';}" onfocus="if (this.value == '+ Add to-do item...') {this.value = '';}" />
-                <input type="submit" style="position: absolute; left: -9999px"  />
-            </form>
-        </div>
-
         <div id="createList" class="hidden">
             <input type="text" placeholder="Add new list..." id="listName" /><br/></br/>
             <button id="btnSubmitList" onclick="return List()">Create</button>
@@ -96,6 +89,12 @@
         </div>
 
         <div id="textContent">
+            <div id="createContainer">
+                <form name="add" onsubmit="return Task()">
+                    <input type="text" value="+ Add to-do item..." id="create" onblur="if (this.value == '') {this.value = '+ Add to-do item...';}" onfocus="if (this.value == '+ Add to-do item...') {this.value = '';}" />
+                    <input type="submit" style="position: absolute; left: -9999px"  />
+                </form>
+            </div>
             <!-- To-Do Items Generated Here -->
         </div>
     </div>
