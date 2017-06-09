@@ -32,9 +32,16 @@ function loadLists(){
         img.src = "images/list.png";
 
         var a = document.createElement('a');
-        li.appendChild(a);
-        a.innerHTML = img.outerHTML + " " + childData.listName;
+        a.innerHTML = img.outerHTML;
         a.href = "javascript:;";
+
+        var div = document.createElement('div');
+        div.innerHTML = " " + childData.listName;
+        div.className = "unhidden";
+
+        a.appendChild(div);
+
+        li.appendChild(a);
 
         li.addEventListener('click', 
             function(){
@@ -77,20 +84,13 @@ var toggleNav = function(){
         searchToggle.classList.remove('hidden');
     }
 
-    var navs = [
-        "navTxt1",
-        "navTxt2",
-        "navTxt3",
-        "navTxt4",
-        "navTxt5",
-        "navTxt6"
-    ];
-    navs.forEach(function(element) {
-        var item = document.getElementById(element);
-        if (item) {
-            item.className=(item.className=='hidden')?'unhidden':'hidden';
-        }
-    }, this);
+    var navs = nav.getElementsByTagName('div');
+    var count = 0;
+
+    while(count < navs.length){
+        navs[count].className=(navs[count].className=='hidden')?'unhidden':'hidden';
+        count++;
+    }
 }
 
 var toggleSearch = function(){
@@ -214,6 +214,58 @@ function highlightNavItem(item){
 
     //Set selected item as active
     item.className=(item.className=='active')?'':'active';
+}
+
+var List = function(){
+    var name = document.getElementById('listName');
+
+    if(name.value != ""){
+        var leftNav = document.getElementById('leftNav');
+        var lastLi = leftNav.lastElementChild;
+
+        var li = document.createElement('li');
+
+        var img = document.createElement('img');
+        img.src = "images/list.png";
+
+        var a = document.createElement('a');
+        li.appendChild(a);
+        a.innerHTML = img.outerHTML + " " + name.value;
+        a.href = "javascript:;";
+
+        li.addEventListener('click', 
+            function(){
+                currentList = name;
+                loadList(name);
+            }, false);
+
+        leftNav.lastElementChild.remove();
+        leftNav.appendChild(li);
+        leftNav.appendChild(lastLi);
+
+        writeListData(userID, name.value);
+        name.value = null;
+        unhide('createList');
+    }
+
+    return false;
+}
+
+function writeUserData(userID, taskMessage) {
+    var taskKey = firebase.database().ref().child('tasks').push().key;
+
+    firebase.database().ref('users/' + userID + '/Tasks/' + taskKey).set({
+        taskMessage: taskMessage,
+        taskList: currentList
+    });
+}
+
+function writeListData(userID, newListName){
+    var listKey = firebase.database().ref().child('lists').push().key;
+
+    firebase.database().ref('users/' + userID + '/Lists/' + listKey).set({
+        listName: newListName
+    });   
 }
 
 /*

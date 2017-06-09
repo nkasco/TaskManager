@@ -68,7 +68,7 @@
                 </a>
             </li>
             <li>
-                <a href="javascript:;">
+                <a href="javascript:;" onclick="unhide('createList')">
                     <img src="images/add.png">
                     <div id="navTxt6" class="unhidden" style="color:#0099ff"> Create List</div>
                 </a>
@@ -80,6 +80,12 @@
         <div id="contentHeader">
             <!-- This will change with navigation, will need a js function-->
             Work - Inbox
+        </div>
+
+        <div id="createList" class="hidden">
+            <input type="text" placeholder="Add new list..." id="listName" /><br/></br/>
+            <button id="btnSubmitList" onclick="return List()">Create</button>
+            <button id="btnCancel" onclick="unhide('createList')">Cancel</button>
         </div>
 
         <div id="userContainer">
