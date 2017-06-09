@@ -21,28 +21,6 @@ function getCurrentList(){
     });
 }
 
-function addListItem(name){
-    //Create checkbox and label
-    var checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.style.verticalAlign = "middle";
-    checkbox.id = name.taskMessage;
-
-    var label = document.createElement("label");
-    label.htmlFor = name.taskMessage;
-    label.className = "strikethrough";
-    label.textContent = name.taskMessage;
-
-    //Add to new div with ID "todoItem"
-    var div = document.createElement("div");
-    div.id = "todoItem";
-    div.innerHTML = checkbox.outerHTML + label.outerHTML;
-
-    //Add new Task to page
-    var todos = document.getElementById("textContent");
-    todos.appendChild(div);
-}
-
 var Task = function(){
     //Capture input
     var name = document.getElementById("create");
@@ -94,7 +72,13 @@ var List = function(){
         var a = document.createElement('a');
         li.appendChild(a);
         a.innerHTML = img.outerHTML + " " + name.value;
-        a.href = "#";
+        a.href = "javascript:;";
+
+        li.addEventListener('click', 
+            function(){
+                currentList = name;
+                loadList(name);
+            }, false);
 
         leftNav.lastElementChild.remove();
         leftNav.appendChild(li);
@@ -112,15 +96,15 @@ function writeUserData(userID, taskMessage) {
     var taskKey = firebase.database().ref().child('tasks').push().key;
 
     firebase.database().ref('users/' + userID + '/Tasks/' + taskKey).set({
-        taskMessage: taskMessage/*,
-        taskList: currentList*/
+        taskMessage: taskMessage,
+        taskList: currentList
     });
 }
 
-function writeListData(userID, listName){
-    var listKey = firebase.database().ref().child('tasks').push().key;
+function writeListData(userID, newListName){
+    var listKey = firebase.database().ref().child('lists').push().key;
 
     firebase.database().ref('users/' + userID + '/Lists/' + listKey).set({
-    listName: listName
+        listName: newListName
     });   
 }

@@ -250,7 +250,6 @@ input[type=checkbox]:checked + label.strikethrough{
 
 #contactContent{
     margin:10;
-    color: white;
 }
 
 #contactName, #contactEmail{

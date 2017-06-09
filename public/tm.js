@@ -34,7 +34,14 @@ function loadLists(){
         var a = document.createElement('a');
         li.appendChild(a);
         a.innerHTML = img.outerHTML + " " + childData.listName;
-        a.href = "#";
+        a.href = "javascript:;";
+
+        li.addEventListener('click', 
+            function(){
+                currentList = childData.listName;
+                loadList(childData.listName);
+                highlightNavItem(a);
+            }, false);
 
         leftNav.lastElementChild.remove();
         leftNav.appendChild(li);
@@ -143,6 +150,73 @@ function loginUserLink(){
     });
 }
 
+function loadList(selectedListName){
+    var tasksRef = database.ref('users/' + userID + '/Tasks/').once('value').then(function(snapshot) {;
+        clearListItems();
+        snapshot.forEach(function(childSnapshot) {
+        var childData = childSnapshot.val();
+        
+        if(childData.taskList == selectedListName){
+            addListItem(childData);
+        }
+        });
+    });
+}
+
+function clearListItems(){
+    var contentAreas = ["textContent","contactContent","userContainer"];
+
+    contentAreas.forEach(function(content) {
+        if(document.getElementById(content)){
+            document.getElementById(content).innerHTML = null;
+        }
+    }, this);
+}
+
+function addListItem(name){
+    //Create checkbox and label
+    var checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.style.verticalAlign = "middle";
+    checkbox.id = name.taskMessage;
+
+    var label = document.createElement("label");
+    label.htmlFor = name.taskMessage;
+    label.className = "strikethrough";
+    label.textContent = name.taskMessage;
+
+    //Add to new div with ID "todoItem"
+    var div = document.createElement("div");
+    div.id = "todoItem";
+    div.innerHTML = checkbox.outerHTML + label.outerHTML;
+
+    //Add new Task to page
+    var contentAreas = ["textContent","contactContent","userContent"];
+
+    contentAreas.forEach(function(content) {
+        if(document.getElementById(content)){
+            var todos = document.getElementById(content);
+            todos.appendChild(div);
+        }
+    }, this);
+}
+
+function highlightNavItem(item){
+    //Inactivate current item
+    var navItems = document.getElementById('leftNav').getElementsByTagName('a');
+    var count = 0;
+    while(count < navItems.length){
+        if(navItems[count].className == "active"){
+            navItems[count].className = null;
+        }
+        count++;
+    }
+
+    //Set selected item as active
+    item.className=(item.className=='active')?'':'active';
+}
+
+/*
 var addResizeEvent = function(object, type, callback) {
     if (object == null || typeof(object) == 'undefined') return;
     if (object.addEventListener) {
@@ -161,4 +235,4 @@ addResizeEvent(window, "resize", function(event) {
       console.log("less than 960");
       //Add adjustment handlers here
   }
-});
+});*/
