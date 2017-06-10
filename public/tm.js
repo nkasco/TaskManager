@@ -185,6 +185,7 @@ function loadList(selectedListName){
     }, this);    
 
     var tasksRef = database.ref('users/' + userID + '/Tasks/').once('value').then(function(snapshot) {;
+        listCompletedItems();
         snapshot.forEach(function(childSnapshot) {
         var childData = childSnapshot.val();
         
@@ -201,6 +202,21 @@ function clearListItems(){
     contentAreas.forEach(function(content) {
         if(document.getElementById(content)){
             document.getElementById(content).innerHTML = null;
+        }
+    }, this);
+}
+
+function listCompletedItems(){
+    var divTitle = document.createElement('div');
+    divTitle.id = "listTitle";
+    divTitle.textContent = "Show Complete";
+
+    var contentAreas = ["textContent","contactContent","userContainer"];
+
+    contentAreas.forEach(function(content) {
+        if(document.getElementById(content)){
+            var todos = document.getElementById(content);
+            todos.appendChild(divTitle);
         }
     }, this);
 }

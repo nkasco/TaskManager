@@ -9,6 +9,7 @@ window.addEventListener('load',
 
 function getAllListItems(){
     var tasksRef = database.ref('users/' + userID + '/Tasks/').once('value').then(function(snapshot) {;
+        listCompletedItems();
         snapshot.forEach(function(childSnapshot) {
         var childData = childSnapshot.val();
         

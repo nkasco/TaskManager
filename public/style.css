@@ -83,6 +83,24 @@ body{
     text-align: left;
 }
 
+#listTitle{
+    width: 100px;
+    background: darkgray;
+    border: 1px solid white;
+    color: white;
+    font-size: 10pt;
+    padding: 5;
+    margin-bottom: 5;
+    margin-left: 5;
+    text-align: center;
+    cursor: pointer;
+}
+
+#listTitle:hover{
+    background: lightgray;
+    opacity: .75;
+}
+
 #todoItem{
     background: lightgray;
     padding: 10;
@@ -275,6 +293,7 @@ input[type=checkbox]:checked + label.strikethrough{
     padding: 75px;
     background: #2E3439;
     opacity: .9;
+    z-index: 1;
 }
 
 #listName, #lists{
