@@ -119,11 +119,13 @@ var Search = function(){
 
         //Loop through and match search criteria
         for (i = 0; i < todoItems.length; i++) {
-            a = todoItems[i].getElementsByTagName("label")[0];
-            if (a.textContent.toUpperCase().indexOf(query) > -1) {
-                todoItems[i].style.display = "";
-            } else {
-                todoItems[i].style.display = "none";
+            if(todoItems[i].id == "todoItem"){
+                a = todoItems[i].getElementsByTagName("label")[0];
+                if (a.textContent.toUpperCase().indexOf(query) > -1) {
+                    todoItems[i].style.display = "";
+                } else {
+                    todoItems[i].style.display = "none";
+                }
             }
         }
     } else {
