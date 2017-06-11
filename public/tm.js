@@ -20,40 +20,75 @@ window.addEventListener('load',
 
 function loadLists(){
     var listsRef = database.ref('users/' + userID + '/Lists/').once('value').then(function(snapshot) {;
+        var count = 1;
         snapshot.forEach(function(childSnapshot) {
-        var childData = childSnapshot.val();
-        
-        var leftNav = document.getElementById('leftNav');
-        var lastLi = leftNav.lastElementChild;
+            if(count <= 5){
+                var childData = childSnapshot.val();
+                
+                var leftNav = document.getElementById('leftNav');
+                var lastLi = leftNav.lastElementChild;
 
-        var li = document.createElement('li');
+                var li = document.createElement('li');
 
-        var img = document.createElement('img');
-        img.src = "images/list.png";
+                var img = document.createElement('img');
+                img.src = "images/list.png";
 
-        var a = document.createElement('a');
-        a.innerHTML = img.outerHTML;
-        a.href = "javascript:;";
+                var a = document.createElement('a');
+                a.innerHTML = img.outerHTML;
+                a.href = "javascript:;";
 
-        var div = document.createElement('div');
-        div.innerHTML = " " + childData.listName;
-        div.className = "unhidden";
+                var div = document.createElement('div');
+                div.innerHTML = " " + childData.listName;
+                div.className = "unhidden";
 
-        a.appendChild(div);
+                a.appendChild(div);
 
-        li.appendChild(a);
+                li.appendChild(a);
 
-        li.addEventListener('click', 
-            function(){
-                currentList = childData.listName;
-                loadList(childData.listName);
-                highlightNavItem(a);
-            }, false);
+                li.addEventListener('click', 
+                    function(){
+                        currentList = childData.listName;
+                        loadList(childData.listName);
+                        highlightNavItem(a);
+                    }, false);
 
-        leftNav.lastElementChild.remove();
-        leftNav.appendChild(li);
-        leftNav.appendChild(lastLi);
+                leftNav.lastElementChild.remove();
+                leftNav.appendChild(li);
+                leftNav.appendChild(lastLi);
+                count++;
+            }
         });
+        if(count > 5){
+            var leftNav = document.getElementById('leftNav');
+            var lastLi = leftNav.lastElementChild;
+
+            var li = document.createElement('li');
+
+            var img = document.createElement('img');
+            img.src = "images/list.png";
+
+            var a = document.createElement('a');
+            a.innerHTML = img.outerHTML;
+            a.href = "javascript:;";
+
+            var div = document.createElement('div');
+            div.innerHTML = " More Lists";
+            div.className = "unhidden";
+
+            a.appendChild(div);
+
+            li.appendChild(a);
+
+            li.addEventListener('click', 
+                function(){
+                    //TODO Add all lists page viewer
+                    highlightNavItem(a);
+                }, false);
+
+            leftNav.lastElementChild.remove();
+            leftNav.appendChild(li);
+            leftNav.appendChild(lastLi);
+        }
     });
 }
 
@@ -317,14 +352,22 @@ var List = function(){
         img.src = "images/list.png";
 
         var a = document.createElement('a');
-        li.appendChild(a);
-        a.innerHTML = img.outerHTML + " " + name.value;
+        a.innerHTML = img.outerHTML;
         a.href = "javascript:;";
+
+        var div = document.createElement('div');
+        div.innerHTML = " " + name.value;
+        div.className = "unhidden";
+
+        a.appendChild(div);
+
+        li.appendChild(a);
 
         li.addEventListener('click', 
             function(){
-                currentList = name;
-                loadList(name);
+                currentList = name; //TODO Fix, results in list name not capturing
+                loadList(name); //TODO Fix
+                highlightNavItem(a);
             }, false);
 
         leftNav.lastElementChild.remove();
@@ -334,6 +377,7 @@ var List = function(){
         highlightNavItem(a);
         currentList = name.value;
         writeListData(userID, name.value);
+        loadList(name.value);
         name.value = null;
         unhide('createList');
     }
